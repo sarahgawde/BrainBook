@@ -1,0 +1,32 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+    <!-- <h1>Blogs!!!</h1> -->
+        {% for article in articles %}
+            <article class="media content-section">
+                    <img class="rounded-circle article-img" src="{{ article.author.profile.image.url }}">
+                    <div class="media-body">
+                      <div class="article-metadata">
+                        <a class="mr-2" href="#">{{ article.author }}</a>
+                        <small class="text-muted">{{ article.date }} </small>
+                      </div>
+                      <h2> <a href="{% url 'articles:details' slug=article.slug %}"> {{ article.title}} </a></h2>
+                      <p class="article-content">{{ article.snippet}}</p>
+                    </div>
+            </article>
+
+        {% endfor %}
+
+        <!-- 
+            date specific ::::: .date|date:"F d, Y"
+            
+            <div class="articles">
+            {% for article in articles %}
+                <div class="article">
+                    <h2> <a href="{% url 'articles:details' slug=article.slug %}"> {{ article.title}} </a></h2>
+                    <p> {{ article.snippet}} </p>
+                    <p> {{ article.date}} </p>
+                </div>
+            {% endfor %}
+        </div> -->
+{% endblock %}

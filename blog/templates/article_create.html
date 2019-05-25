@@ -1,0 +1,16 @@
+{% extends 'base_layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+        <div class="create-article">
+                <h3>Create an article</h3>
+                <form class="site-form" action="{% url 'articles:create' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token%}
+                    {{form|crispy}}
+                    <br>
+                    <div class="form-group">
+                          <button class="btn btn-outline-success" type="submit" value="LogIn">Submit</button>
+                   </div>                </form>
+        </div>
+        <script src="/static/slugify.js"></script>
+{% endblock %}
